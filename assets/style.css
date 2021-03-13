@@ -1,1 +1,23 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}
+
+header {
+    width: 100%;
+    background: url('./image/pattern.jpg');
+    align-items: center;
+}
+
+h1 {
+    padding-left: 2%;
+    font-size: 7vh;
+    color: white;
+}
+
+
+.title {
+
+}
 
