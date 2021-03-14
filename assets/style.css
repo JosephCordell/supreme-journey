@@ -1,0 +1,93 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}
+
+body{
+    background-color: lightslategrey;
+    height: 100vh;
+    
+}
+header {
+    width: 100%;
+    background: url("../image/pattern.jpg");
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    padding: 10px;
+    font-size: 7vh;
+    color: white;
+}
+
+
+.search-container {
+    margin-top: 15%;
+    margin-left: 25%;
+    width: 50%;
+    border: black 2px solid;
+    background-color: lightgray;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
+}
+
+.search-box{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    
+    
+}
+.city-search{
+    height: 30px;
+    border: 1px solid black;
+    
+
+}
+.search-icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: #2196F3;
+    color: white;
+    height: 30px;
+    width: 30px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 4px;
+}
+
+.content{
+    display: flex;
+}
+
+.left-side{
+    background-color: cornsilk;
+    padding: 30px;
+    width: 35%;
+}
+
+#map{
+    width: 100%;
+    background-color: ghostwhite;
+}
+
+.user-input{
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.card{
+    background-color: gold;
+    border-radius: 5px;
+    padding: 10px;
+}
+
