@@ -78,7 +78,15 @@ h1 {
 #map{
     width: 100%;
     background-color: ghostwhite;
+    height: 100%;
 }
+
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
 
 .user-input{
     font-weight: bold;
@@ -89,5 +97,10 @@ h1 {
     background-color: gold;
     border-radius: 5px;
     padding: 10px;
+}
+
+.card-container h1 {
+    color: black;
+    font-size: 24px;
 }
 
