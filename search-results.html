@@ -14,6 +14,12 @@
     </header>
     <div class="content">
         <aside class="left-side">
+            <div class="search-box">
+                <input id="search-text" name="city-search" type="text" class="city-search" value='98004' >
+                <button id='button' type="submit">
+                    <i class="fa fa-search search-icon"></i>
+                </button>
+            </div>
             <!-- puts in user input ex "Restaurants in Bellevue" -->
             <div class="user-input">Dummy text</div>
             <br>
@@ -25,11 +31,13 @@
             </div>
         </aside>
 
-        <section id="map">
+        <div id="maps">
             <!-- display map here -->
-            <p>dummy map</p>
-        </section>
+            <h1>GOOGLE MAPS</h1>
+            <div id="map"></div>
+        </div>
     </div>
-    <script src="assets/script.js"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTB_eDKm4TVgr2-_T2N3pvM2dBNsKjby8&callback=initMap&libraries=&v=weekly" async></script>
+    <script src="./assets/script.js"></script>
 </body>
 </html>
