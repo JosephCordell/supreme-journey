@@ -40,7 +40,7 @@ function businessCards (data) {
   console.log(data)
   for (let i = 0; i <= 5; i++) {
         const restaurantCardEl = document.createElement("div"); 
-        restaurantCardEl.classList.add("card_body"); 
+        restaurantCardEl.classList.add("card"); 
         const rName = data.data[i].restaurant_name; 
         const rPhone = data.data[i].restaurant_phone;
         const rAddress = data.data[i].address.formatted;
