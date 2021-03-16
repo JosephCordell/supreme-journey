@@ -16,10 +16,7 @@ function test () {
   });
 };
 
-let lat= 47.6137
-let lng= -122.19093
-
-
+console.log(process.env.GOOGLEAPI)
 
 let map;
 
