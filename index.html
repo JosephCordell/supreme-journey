@@ -16,10 +16,14 @@
         <h1>Welcome to Supreme Journey</h1>
     </header>
     <div class="search-container">
-        <div class="title">Search for a city: </div>
+        <div class="title">Search</div>
         <div class="search-box">
+            <select name="Options" id='selectbox' class="city-search">
+                <option value="City">Search by City</option>
+                <option value="Zip">Zip</option> 
+            </select>
             <input id="search-text" name="city-search" type="text" class="city-search">
-            <button type="submit">
+            <button type="submit" class="buttonbg">
                 <i class="fa fa-search search-icon"></i>
             </button>
         </div>
