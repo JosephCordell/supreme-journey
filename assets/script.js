@@ -47,8 +47,8 @@ function businessCards (data) {
         console.log(rName); 
         const rInnerHTML = `
         <h1> ${rName} </h1>
-        <p> Phone Number: ${rPhone} </p>
-        <p> Address: ${rAddress} </p>
+        <a href="tel:${rPhone}">${rPhone}</a> <br> 
+        <a href="http://maps.google.com?q=${rlat},${rlon} "> Address: ${rAddress}</a>
         `
         restaurantCardEl.innerHTML = rInnerHTML; 
         container.appendChild(restaurantCardEl);
