@@ -16,6 +16,7 @@ function test () {
   });
 };
 
+console.log(process.env.GOOGLEAPI)
 
 let map;
 
