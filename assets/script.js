@@ -1,3 +1,6 @@
+const container = document.querySelector(".card-container"); 
+const buttonEl = document.getElementById('button')
+const inputEl = document.getElementById('search-text')
 
 buttonEl.addEventListener('click', test);
 
