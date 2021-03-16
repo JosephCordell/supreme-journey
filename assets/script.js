@@ -1,8 +1,9 @@
 const container = document.querySelector(".card-container"); 
 const buttonEl = document.getElementById('button')
 const inputEl = document.getElementById('search-text')
+var searchFormEl = document.querySelector('#search-form');
 
-buttonEl.addEventListener('click', test);
+//buttonEl.addEventListener('click', test);
 
 function test () {
   let input = inputEl.value.trim()
@@ -16,7 +17,7 @@ function test () {
   });
 };
 
-console.log(process.env.GOOGLEAPI)
+//console.log(process.env.GOOGLEAPI)
 
 let map;
 
@@ -63,6 +64,23 @@ function addMarker(latitude, longitude) {
     map: map
 })
 }
+
+function handleSearchFormSubmit(event) {
+  event.preventDefault();
+
+  var searchTextVal = document.querySelector('#search-text').value;
+
+  //use below if we have search options dropdown
+/*   var formatInputVal = document.querySelector('#format-input').value; */
+
+  if (!searchTextVal) {
+    console.error('You need a search input value!');
+    return;
+  }
+  test();
+}
+
+searchFormEl.addEventListener('submit', handleSearchFormSubmit);
 
 /* UTILIZE FOR POP UP WINDOWS LATER
   let infoWindow = new google.maps.InfoWindow({
