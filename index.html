@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <title>Supreme Journey</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -18,8 +17,12 @@
         <div class="title">Search for a Restaurant: </div>
         <div class="search-box">
             <form id="search-form">
+                <select name="Options" id='selectbox' class="city-search">
+                    <option value="City">Search by City</option>
+                    <option value="Zip">Zip</option> 
+                </select>
                 <input id="search-text" name="city-search" type="text" class="city-search">
-                <button type="submit" id="button">
+                <button type="submit" id="buttonbg">
                     <i class="fa fa-search search-icon"></i>
                 </button>
             </form>

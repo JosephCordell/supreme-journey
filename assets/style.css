@@ -28,7 +28,7 @@ h1 {
     margin-top: 15%;
     margin-left: 25%;
     width: 50%;
-    border: black 2px solid;
+    border: black 1px solid;
     background-color: lightgray;
     display: flex;
     justify-content: space-around;
@@ -41,28 +41,34 @@ h1 {
     display: flex;
     align-items: center;
     padding: 10px;
+
     
     
 }
 .city-search{
     height: 30px;
     border: 1px solid black;
-    
-
+    border-radius: 10px;
 }
+
 .search-icon {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background: #2196F3;
+    background: transparent;
     color: white;
     height: 30px;
     width: 30px;
-    font-size: 18px;
-    border-radius: 5px;
+    font-size: 24px;
     cursor: pointer;
-    margin-left: 4px;
+}
+
+.buttonbg {
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color: lime;
+
 }
 
 .content{
