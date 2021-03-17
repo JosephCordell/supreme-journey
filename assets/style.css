@@ -73,6 +73,12 @@ h1 {
 
 .content{
     display: flex;
+    color: black;
+}
+
+.content h1 {
+    font-size: 24px;
+    color: black;
 }
 
 .left-side{
@@ -82,7 +88,7 @@ h1 {
 }
 
 #map{
-    width: 100%;
+    width: 80vw;
     background-color: ghostwhite;
     height: 100%;
 }
