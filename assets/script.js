@@ -3,20 +3,24 @@ const buttonEl = document.getElementById('button')
 const inputEl = document.getElementById('search-text')
 var searchFormEl = document.querySelector('#search-form');
 
-//buttonEl.addEventListener('click', searchRestaruant);
+function modal() {
 
+}
+
+//buttonEl.addEventListener('click', searchRestaruant);
 function searchRestaruant () {
   let input = inputEl.value.trim()
   docuMenuURL = `https://api.documenu.com/v2/restaurants/zip_code/${input}?key=ce2dc71b6458503cfc0e34adfe844c3f`
   fetch(docuMenuURL)
+  
   .then(response => {
     return response.json();
   })
+
   .then(request => {
-    businessCards(request);
+    businessCards(request);  
   });
 };
-
 //console.log(process.env.GOOGLEAPI)
 
 let map;
@@ -103,5 +107,16 @@ function handleSearchFormSubmit(event) {
 
 searchFormEl.addEventListener('submit', handleSearchFormSubmit);
 
+// Show modal if invalid zip code 
+const modalBtn = document.querySelector(".modal-btn"); 
+const modalBg = document.querySelector(".modal-bg"); 
 
+function showModal() {
+  modalBg.classList.add("modal-active"); 
+}
+showModal(); 
 
+// Close modal on button click 
+modalBtn.addEventListener("click", function() {
+  modalBg.classList.remove("modal-active"); 
+})
