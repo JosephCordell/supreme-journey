@@ -3,6 +3,9 @@ const buttonEl = document.getElementById('button')
 const inputEl = document.getElementById('search-text')
 var searchFormEl = document.querySelector('#search-form');
 
+
+lastWindow=null;
+
 //buttonEl.addEventListener('click', searchRestaruant);
 
 function searchRestaruant () {
@@ -58,32 +61,31 @@ function businessCards (data) {
         <a href="tel:${rPhone}">${rPhone}</a> <br> 
         <a href="http://maps.google.com?q=${rlat},${rlon} "> Address: ${rAddress}</a>
         `
-
-        //creates an info window, but currently only holds data for the last card, not individual ones. Commented out for now
-/*         infoWindow = new google.maps.InfoWindow({
-          content:`<h1>${rName}</h1> 
-          <p> Phone Number: ${rPhone} </p>
-          <p> Address: ${rAddress} </p>`
-        }) */
         restaurantCardEl.innerHTML = rInnerHTML; 
         container.appendChild(restaurantCardEl);
-        addMarker(rlat, rlon)
+        addMarker(rlat, rlon, rInnerHTML)
 }
 }
-
 
 //add marker function, *utilize this within the card making function*
-function addMarker(latitude, longitude) {
+function addMarker(latitude, longitude, note) {
   let marker = new google.maps.Marker({
+    map: map,
     position: {lat: latitude, lng: longitude},
-    map: map
-})
-
-// info window pops up when clicking on the marker
-marker.addListener('click', function () {
- infoWindow.open(map, marker)
-}) 
+    clickable: true
+  })
+  google.maps.event.addListener(marker, 'click', function() {
+    infoWindow.setContent(note);
+    infoWindow.open(map, marker);
+  });
 }
+
+
+window.addEventListener('load', (event) => {
+  infoWindow = new google.maps.InfoWindow({
+    content: ''
+  })
+});
 
 //searches a new zip code from the search input
 function handleSearchFormSubmit(event) {
