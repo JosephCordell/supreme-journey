@@ -2,53 +2,74 @@
     margin: 0px;
     padding: 0px;
     border: none;
+    font-family: 'DM Sans', sans-serif;
+}
+
+:root {
+    --bg-color: rgb(255, 248, 248);
+    --drk-color: rgb(161, 69, 227);
+    --md-color: rgb(41, 111, 216);
+    --lt-color: rgb(252, 228, 48);
 }
 
 body{
-    background-color: lightslategrey;
+    background-color: var(--bg-color);
     height: 100vh;
-    
 }
+
 header {
     width: 100%;
     background: url("../image/pattern.jpg");
     display: flex;
     align-items: center;
     justify-content: center;
+    border-bottom: 2px solid var(--drk-color)
 }
 
 h1 {
     padding: 10px;
-    font-size: 7vh;
-    color: white;
+    font-size: 6vw;
+    color: whitesmoke;
+    text-align: center;
 }
 
+h2 {
+    padding: 10px;
+    font-size: 2vw;
+    color: var(--md-color);
+    text-align: center;
+    display: none;
+}
 
 .search-container {
     margin-top: 15%;
     margin-left: 25%;
-    width: 50%;
-    border: black 1px solid;
-    background-color: lightgray;
+    width: 45%;
+    border-radius: 5px;
+    border: 2px solid var(--md-color);
+    background-color: var(--bg-color);
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
-    padding: 30px;
+    padding: 35px;
+}
+
+.title {
+    font-size: 1.5vw;
+    font-weight: bolder;   
 }
 
 .search-box{
     display: flex;
     align-items: center;
-    padding: 10px;
-
-    
-    
+    padding-top: 15px;
 }
+
 .city-search{
     height: 30px;
     border: 1px solid black;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .search-icon {
@@ -56,22 +77,22 @@ h1 {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background: transparent;
-    color: white;
+    background-color: var(--drk-color);
+    color: whitesmoke;
     height: 30px;
     width: 30px;
-    font-size: 24px;
+    font-size: 1.5vw;
     cursor: pointer;
 }
 
-.buttonbg {
-    border-radius: 10px;
+.button-bg {
+    border-radius: 5px;
     border: 1px solid black;
-    background-color: lime;
+    background-color: var(--drk-color);
 
 }
 
-.content{
+.content {
     display: flex;
     color: black;
 }
@@ -81,33 +102,44 @@ h1 {
     color: black;
 }
 
-.left-side{
-    background-color: cornsilk;
+.left-side {
+    background-color: var(--bg-color);
     padding: 30px;
     width: 35%;
+    height: 90vh;
 }
 
-#map{
-    width: 80vw;
-    background-color: ghostwhite;
+
+#maps {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#map {
+    width: 100%;
     height: 100%;
 }
 
-  html,
-  body {
+/* html,
+body {
     height: 100%;
     margin: 0;
     padding: 0;
   }
+*/
 
-.user-input{
+.user-input {
     font-weight: bold;
     font-size: 2rem;
 }
 
-.card{
-    background-color: gold;
-    border-radius: 5px;
+.card {
+    background-color: var(--lt-color);
+    border-radius: 10px;
+    border-left: 1px solid var(--md-color);
+    border-bottom: 1px solid var(--md-color);
     padding: 10px;
     margin: 10px
 }
