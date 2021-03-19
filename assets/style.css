@@ -126,14 +126,6 @@ h2 {
     height: 100%;
 }
 
-/* html,
-body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
-*/
-
 .user-input {
     font-weight: bold;
     font-size: 2rem;
@@ -146,9 +138,6 @@ body {
     border-bottom: 1px solid var(--md-color);
     padding: 10px;
     margin: 10px
-}
-
-.card-container {
 }
 
 .card-container h1 {
