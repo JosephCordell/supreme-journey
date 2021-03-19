@@ -1,5 +1,4 @@
 const container = document.querySelector(".card-container"); 
-const buttonEl = document.getElementById('button')
 const inputEl = document.getElementById('search-text')
 var searchFormEl = document.querySelector('#search-form');
 var cardEl = document.querySelector('.card')
