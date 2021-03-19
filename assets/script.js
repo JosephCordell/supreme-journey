@@ -55,6 +55,8 @@ function businessCards (data) {
         const rName = data.data[i].restaurant_name; 
         const rPhone = data.data[i].restaurant_phone;
         const rAddress = data.data[i].address.formatted;
+        const rGoogleAddress = rAddress.replace(/ /g, '+');
+        console.log(rGoogleAddress)
         const rWebsite = data.data[i].restaurant_website;
         let rlat = data.data[i].geo.lat;
         let rlon = data.data[i].geo.lon;
@@ -65,7 +67,7 @@ function businessCards (data) {
             <h1> ${rName} </h1> <br>
             Type of food: ${rCuisines[0]} <br>
             Phone Number: <a href="tel:${rPhone}">${rPhone}</a> <br> 
-            Address: <a href="http://maps.google.com?q=${rlat},${rlon} ">${rAddress}</a> <br>
+            Address: <a href="http://maps.google.com/maps/place/${rGoogleAddress}/" target=”_blank>${rAddress}</a> <br>
             Website Link: <a href="${rWebsite}" target=”_blank”>Website</a>
             `
             restaurantCardEl.innerHTML = rInnerHTML; 
@@ -76,15 +78,14 @@ function businessCards (data) {
           <h1> ${rName} </h1> <br>
           Type of food: Unknown<br>
           Phone Number: <a href="tel:${rPhone}">${rPhone}</a> <br> 
-          Address: <a href="http://maps.google.com?q=${rlat},${rlon} ">${rAddress}</a> <br>
+          Address: <a href="http://maps.google.com/maps/place/${rGoogleAddress}/" target=”_blank>${rAddress}</a> <br>
           Website Link: <a href="${rWebsite}" target=”_blank”>Website</a>
           `
           restaurantCardEl.innerHTML = rInnerHTML; 
           container.appendChild(restaurantCardEl);
           addMarker(rlat, rlon, rInnerHTML)
         }
-
-}
+  }
 }
 
 //add marker function, *utilize this within the card making function*
@@ -106,7 +107,6 @@ function addMarker(latitude, longitude, note) {
   });
 
 }
-
 
 window.addEventListener('load', (event) => {
   infoWindow = new google.maps.InfoWindow({
@@ -132,5 +132,14 @@ function handleSearchFormSubmit(event) {
 
 searchFormEl.addEventListener('submit', handleSearchFormSubmit);
 
+
+//trying to make the markers bounce, it's not working yet :( 
+$(".card").hover(
+  function() {
+      $(this).addClass('active');
+  }, function() {
+      $( this ).removeClass('active');
+  }
+  );
 
 
