@@ -1,11 +1,8 @@
 const container = document.querySelector(".card-container"); 
-const buttonEl = document.getElementById('button')
 const inputEl = document.getElementById('search-text')
 var searchFormEl = document.querySelector('#search-form');
 
-//buttonEl.addEventListener('click', searchRestaruant);
-
-function searchRestaruant () {
+function searchRestaurant() {
   let input = inputEl.value.trim()
   docuMenuURL = `https://api.documenu.com/v2/restaurants/zip_code/${input}?key=ce2dc71b6458503cfc0e34adfe844c3f`
   fetch(docuMenuURL)
@@ -16,8 +13,6 @@ function searchRestaruant () {
     businessCards(request);
   });
 };
-
-//console.log(process.env.GOOGLEAPI)
 
 let map;
 let infoWindow;
@@ -98,7 +93,7 @@ function handleSearchFormSubmit(event) {
     console.error('You need a search input value!');
     return;
   }
-  searchRestaruant();
+  searchRestaurant();
 }
 
 searchFormEl.addEventListener('submit', handleSearchFormSubmit);
