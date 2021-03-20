@@ -44,6 +44,7 @@ function updateMap(lati, longi) {
 
 //creates the business cards for the left column
 function businessCards (data) {
+  if (data.data.length > 0) {
   container.innerHTML = ""
   let rlat = data.data[0].geo.lat;
   let rlon = data.data[0].geo.lon;
@@ -73,6 +74,7 @@ function businessCards (data) {
         container.appendChild(restaurantCardEl);
         addMarker(rlat, rlon)
 }
+} else showModal(); 
 }
 
 
@@ -114,7 +116,7 @@ const modalBg = document.querySelector(".modal-bg");
 function showModal() {
   modalBg.classList.add("modal-active"); 
 }
-showModal(); 
+
 
 // Close modal on button click 
 modalBtn.addEventListener("click", function() {
