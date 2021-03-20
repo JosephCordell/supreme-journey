@@ -58,24 +58,34 @@ function businessCards (data) {
         const rAddress = data.data[i].address.formatted;
         let rlat = data.data[i].geo.lat;
         let rlon = data.data[i].geo.lon;
-        const rInnerHTML = `
-        <h1> ${rName} </h1>
-        <a href="tel:${rPhone}">${rPhone}</a> <br> 
-        <a href="http://maps.google.com?q=${rlat},${rlon} "> Address: ${rAddress}</a>
-        `
-
-        //creates an info window, but currently only holds data for the last card, not individual ones. Commented out for now
-/*         infoWindow = new google.maps.InfoWindow({
-          content:`<h1>${rName}</h1> 
-          <p> Phone Number: ${rPhone} </p>
-          <p> Address: ${rAddress} </p>`
-        }) */
-        restaurantCardEl.innerHTML = rInnerHTML; 
-        container.appendChild(restaurantCardEl);
-        addMarker(rlat, rlon)
-}
-} else showModal(); 
-}
+        let rCuisines;
+        if (data.data[i].cuisines[0] != '') {
+            rCuisines = data.data[i].cuisines;
+            const rInnerHTML = `
+            <h1> ${rName} </h1> <br>
+            Type of food: ${rCuisines[0]} <br>
+            <a href="tel:${rPhone}">${rPhone}</a> <br> 
+            <a href="http://maps.google.com/maps/place/${rGoogleAddress}/" target=”_blank>${rAddress}</a> <br>
+            <a href="${rWebsite}" target=”_blank”>Website</a>
+            `
+            restaurantCardEl.innerHTML = rInnerHTML; 
+            container.appendChild(restaurantCardEl);
+            addMarker(rlat, rlon, rInnerHTML)
+        } else {
+          const rInnerHTML = `
+          <h1> ${rName} </h1> <br>
+          Type of food: Unlisted<br>
+          <a href="tel:${rPhone}">${rPhone}</a> <br> 
+          <a href="http://maps.google.com/maps/place/${rGoogleAddress}/" target=”_blank>${rAddress}</a> <br>
+          <a href="${rWebsite}" target=”_blank”>Website</a>
+          `
+          restaurantCardEl.innerHTML = rInnerHTML; 
+          container.appendChild(restaurantCardEl);
+          addMarker(rlat, rlon, rInnerHTML)
+        }
+      } 
+    } else showModal(); 
+  }
 
 
 //add marker function, *utilize this within the card making function*
