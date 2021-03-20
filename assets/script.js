@@ -66,9 +66,9 @@ function businessCards (data) {
             const rInnerHTML = `
             <h1> ${rName} </h1> <br>
             Type of food: ${rCuisines[0]} <br>
-            Phone Number: <a href="tel:${rPhone}">${rPhone}</a> <br> 
-            Address: <a href="http://maps.google.com/maps/place/${rGoogleAddress}/" target=”_blank>${rAddress}</a> <br>
-            Website Link: <a href="${rWebsite}" target=”_blank”>Website</a>
+            <a href="tel:${rPhone}">${rPhone}</a> <br> 
+            <a href="http://maps.google.com/maps/place/${rGoogleAddress}/" target=”_blank>${rAddress}</a> <br>
+            <a href="${rWebsite}" target=”_blank”>Website</a>
             `
             restaurantCardEl.innerHTML = rInnerHTML; 
             container.appendChild(restaurantCardEl);
@@ -77,9 +77,9 @@ function businessCards (data) {
           const rInnerHTML = `
           <h1> ${rName} </h1> <br>
           Type of food: Unknown<br>
-          Phone Number: <a href="tel:${rPhone}">${rPhone}</a> <br> 
-          Address: <a href="http://maps.google.com/maps/place/${rGoogleAddress}/" target=”_blank>${rAddress}</a> <br>
-          Website Link: <a href="${rWebsite}" target=”_blank”>Website</a>
+          <a href="tel:${rPhone}">${rPhone}</a> <br> 
+          <a href="http://maps.google.com/maps/place/${rGoogleAddress}/" target=”_blank>${rAddress}</a> <br>
+          <a href="${rWebsite}" target=”_blank”>Website</a>
           `
           restaurantCardEl.innerHTML = rInnerHTML; 
           container.appendChild(restaurantCardEl);
