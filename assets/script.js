@@ -17,14 +17,15 @@ function searchRestaurant() {
   let input = inputEl.value.trim()
   docuMenuURL = `https://api.documenu.com/v2/restaurants/zip_code/${input}?key=ce2dc71b6458503cfc0e34adfe844c3f`
   fetch(docuMenuURL)
+  
   .then(response => {
     return response.json();
   })
+
   .then(request => {
-    businessCards(request);
+    businessCards(request);  
   });
 };
-
 
 //creates map that currently centers around Bellevue
 function initMap() {
@@ -44,6 +45,7 @@ function updateMap(lati, longi) {
 
 //creates the business cards for the left column
 function businessCards (data) {
+  if (data.data.length > 0) {
   container.innerHTML = ""
   let rlat = data.data[0].geo.lat;
   let rlon = data.data[0].geo.lon;
@@ -76,7 +78,7 @@ function businessCards (data) {
         } else {
           const rInnerHTML = `
           <h1> ${rName} </h1> <br>
-          Type of food: Unknown<br>
+          Type of food: Unlisted<br>
           <a href="tel:${rPhone}">${rPhone}</a> <br> 
           <a href="http://maps.google.com/maps/place/${rGoogleAddress}/" target=”_blank>${rAddress}</a> <br>
           <a href="${rWebsite}" target=”_blank”>Website</a>
@@ -85,8 +87,9 @@ function businessCards (data) {
           container.appendChild(restaurantCardEl);
           addMarker(rlat, rlon, rInnerHTML)
         }
+      } 
+    } else showModal(); 
   }
-}
 
 //add marker function, *utilize this within the card making function*
 function addMarker(latitude, longitude, note) {
@@ -132,14 +135,15 @@ function handleSearchFormSubmit(event) {
 
 searchFormEl.addEventListener('submit', handleSearchFormSubmit);
 
+// Show modal if invalid zip code 
+const modalBtn = document.querySelector(".modal-btn"); 
+const modalBg = document.querySelector(".modal-bg"); 
 
-//trying to make the markers bounce, it's not working yet :( 
-$(".card").hover(
-  function() {
-      $(this).addClass('active');
-  }, function() {
-      $( this ).removeClass('active');
-  }
-  );
+function showModal() {
+  modalBg.classList.add("modal-active"); 
+}
 
-
+// Close modal on button click 
+document.querySelector(".modal-btn").addEventListener("click", function() {
+  modalBg.classList.remove("modal-active"); 
+})
