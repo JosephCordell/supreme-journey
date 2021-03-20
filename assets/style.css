@@ -6,7 +6,7 @@
 }
 
 :root {
-    --bg-color: rgb(255, 248, 248);
+    --bg-color: whitesmoke;
     --drk-color: rgb(161, 69, 227);
     --md-color: rgb(41, 111, 216);
     --lt-color: rgb(252, 228, 48);
@@ -17,19 +17,25 @@ body{
     height: 100vh;
 }
 
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 header {
     width: 100%;
     background: url("../image/pattern.jpg");
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 2px solid var(--drk-color)
+    border-bottom: 3px solid var(--drk-color)
 }
 
 h1 {
     padding: 15px;
     font-family: 'Notable', monospace; 
-    font-size: 5vw;
+    font-size: 7vw;
     color: whitesmoke;
     text-align: center;
 }
@@ -42,35 +48,43 @@ h2 {
     display: none;
 }
 
+h3 {
+    padding: 10px;
+    color: black;
+    text-align: center;
+}
+
 .search-container {
     margin-top: 15%;
-    margin-left: 25%;
-    width: 45%;
-    border-radius: 5px;
-    border: 2px solid var(--md-color);
+    border-radius: 15px;
     background-color: var(--bg-color);
+    border: 3px solid var(--md-color);
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
     padding: 35px;
-}
-
-.title {
-    font-size: 1.5vw;
-    font-weight: bolder;   
+    box-shadow: 1px 1px 1px var(--drk-color);
 }
 
 .search-box {
-    display: flex;
-    align-items: center;
     padding-top: 15px;
 }
 
 .city-search {
     height: 30px;
-    border: 1px solid black;
-    border-radius: 5px;
+    border: 1px solid var(--drk-color);
+    border-radius: 5px 0px 0px 5px;
+}
+.city-search:focus {
+    outline: none;
+}
+
+#search-form {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
 }
 
 .search-icon {
@@ -79,19 +93,13 @@ h2 {
     justify-content: center;
     align-items: center;
     background-color: var(--drk-color);
-    border-radius: 5px;
+    border-radius: 0px 5px 5px 0px;
+    border: 1px solid var(--drk-color);
     color: whitesmoke;
     height: 30px;
     width: 30px;
-    font-size: 1.5vw;
+    font-size: 25px;
     cursor: pointer;
-}
-
-.button-bg {
-    border-radius: 5px;
-    border: 1px solid black;
-    background-color: var(--drk-color);
-
 }
 
 .content {
@@ -112,7 +120,6 @@ h2 {
     overflow: scroll;
 }
 
-
 #maps {
     background-color: transparent;
     display: flex;
@@ -131,18 +138,38 @@ h2 {
     font-size: 2rem;
 }
 
+.card-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: flex-start;
+
+}
+
 .card {
+    flex: 1 1 content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     background-color: var(--lt-color);
     border-radius: 10px;
-    border-left: 1px solid var(--md-color);
+    border-right: 1px solid var(--md-color);
     border-bottom: 1px solid var(--md-color);
     padding: 10px;
     margin: 10px
 }
 
-.card-container h1 {
+.card h1 {
     color: black;
     font-size: 20px;
+}
+
+.card a {
+    text-decoration: none;
+    text-align: center;
 }
 
 .modal-bg {
@@ -187,4 +214,19 @@ h2 {
     top: 10px; 
     right: 10px; 
     font-weight: bold; 
+}
+
+@media only screen and (max-width: 600px) {
+    .content {
+        flex-wrap: wrap;
+    }
+    .left-side {
+        width: 100%;
+        height: 30vh;
+        border-bottom: 3px solid var(--drk-color);
+    }
+    #maps {
+        height: 50vh;
+    }
+
 }

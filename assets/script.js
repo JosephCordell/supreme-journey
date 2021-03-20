@@ -143,17 +143,7 @@ function showModal() {
   modalBg.classList.add("modal-active"); 
 }
 
-//trying to make the markers bounce, it's not working yet :( 
-$(".card").hover(
-  function() {
-      $(this).addClass('active');
-  }, function() {
-      $( this ).removeClass('active');
-  }
-  );
-
-
 // Close modal on button click 
-modalBtn.addEventListener("click", function() {
+document.querySelector(".modal-btn").addEventListener("click", function() {
   modalBg.classList.remove("modal-active"); 
 })
