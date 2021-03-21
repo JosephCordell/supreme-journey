@@ -13,26 +13,41 @@ function markerBounce() {
   console.log('BOUNCE')
 }
 
-function searchRestaurant() {
-  let input = inputEl.value.trim()
-  docuMenuURL = `https://api.documenu.com/v2/restaurants/zip_code/${input}?key=ce2dc71b6458503cfc0e34adfe844c3f`
+//gets data from DocuMenu for cards and map markers
+function searchRestaurant(zipcode = null) {
+  if (zipcode === null) {
+    zipcode = inputEl.value.trim()
+  }
+  docuMenuURL = `https://api.documenu.com/v2/restaurants/zip_code/${zipcode}?key=ce2dc71b6458503cfc0e34adfe844c3f`
   fetch(docuMenuURL)
-  
-  .then(response => {
-    return response.json();
-  })
-
-  .then(request => {
-    businessCards(request);  
-  });
+    .then(response => {
+      if (response.ok){
+        return response.json();
+      }
+      throw new Error("invalid asl;dkjf")
+    })
+    .then(request => {
+      businessCards(request);  
+    })
+    .catch(error => {
+      console.log(error)
+    });
 };
 
 //creates map that currently centers around Bellevue
 function initMap() {
+  if (window.location.search.indexOf('q=') === -1 ){
   map = new google.maps.Map(document.getElementById("map"), {
     center: {lat: 47.6137, lng: -122.19093},
     zoom: zoomLevel,
   });
+  } else {
+    let URLtransfer = window.location.search.slice(window.location.search.indexOf('q=')+2)
+    if (URLtransfer.indexOf('&') !== -1) {
+      URLtransfer.slice(1,URLtransfer.indexOf('&') -1)
+    }
+    searchRestaurant(URLtransfer)
+  }
 }
 
 //creates map that currently centers around Bellevue
@@ -58,59 +73,67 @@ function businessCards (data) {
         const rPhone = data.data[i].restaurant_phone;
         const rAddress = data.data[i].address.formatted;
         const rGoogleAddress = rAddress.replace(/ /g, '+');
-        console.log(rGoogleAddress)
         const rWebsite = data.data[i].restaurant_website;
         let rlat = data.data[i].geo.lat;
         let rlon = data.data[i].geo.lon;
         let rCuisines;
+        let rInnerHTML
         if (data.data[i].cuisines[0] != '') {
             rCuisines = data.data[i].cuisines;
-            const rInnerHTML = `
+            rInnerHTML = `
             <h1> ${rName} </h1> <br>
             Type of food: ${rCuisines[0]} <br>
             <a href="tel:${rPhone}">${rPhone}</a> <br> 
             <a href="http://maps.google.com/maps/place/${rGoogleAddress}/" target=”_blank>${rAddress}</a> <br>
             <a href="${rWebsite}" target=”_blank”>Website</a>
             `
-            restaurantCardEl.innerHTML = rInnerHTML; 
-            container.appendChild(restaurantCardEl);
-            addMarker(rlat, rlon, rInnerHTML)
         } else {
-          const rInnerHTML = `
+          rInnerHTML = `
           <h1> ${rName} </h1> <br>
           Type of food: Unlisted<br>
           <a href="tel:${rPhone}">${rPhone}</a> <br> 
           <a href="http://maps.google.com/maps/place/${rGoogleAddress}/" target=”_blank>${rAddress}</a> <br>
           <a href="${rWebsite}" target=”_blank”>Website</a>
           `
-          restaurantCardEl.innerHTML = rInnerHTML; 
-          container.appendChild(restaurantCardEl);
-          addMarker(rlat, rlon, rInnerHTML)
         }
+        restaurantCardEl.innerHTML = rInnerHTML; 
+        
+        let markee = addMarker(rlat, rlon, rInnerHTML, data.data[i].restaurant_id);
+        restaurantCardEl.addEventListener('mouseover', () => {
+          if (markee.getAnimation() === null) {
+            markee.setAnimation(google.maps.Animation.BOUNCE);
+          }
+        })
+        restaurantCardEl.addEventListener('mouseout', () => {
+            markee.setAnimation(null);
+        })
+        restaurantCardEl.addEventListener('click', function() {
+          infoWindow.setContent(rInnerHTML);
+          infoWindow.open(map, markee);
+        });
+        
+        container.appendChild(restaurantCardEl);
       } 
     } else showModal(); 
   }
 
 //add marker function, *utilize this within the card making function*
-function addMarker(latitude, longitude, note) {
+function addMarker(latitude, longitude, note, id) {
   let marker = new google.maps.Marker({
-    map: map,
+    map,
     position: {lat: latitude, lng: longitude},
     animation: google.maps.Animation.DROP,
-    clickable: true
+    clickable: true, 
+    id
   })
   google.maps.event.addListener(marker, 'click', function() {
     infoWindow.setContent(note);
     infoWindow.open(map, marker);
-    if (marker.getAnimation() !== null) {
-      marker.setAnimation(null);
-    } else {
-      marker.setAnimation(google.maps.Animation.BOUNCE);
-    }
   });
-
+  return marker;
 }
 
+//creates info window with details from each card
 window.addEventListener('load', (event) => {
   infoWindow = new google.maps.InfoWindow({
     content: ''
@@ -120,12 +143,7 @@ window.addEventListener('load', (event) => {
 //searches a new zip code from the search input
 function handleSearchFormSubmit(event) {
   event.preventDefault();
-
   var searchTextVal = document.querySelector('#search-text').value;
-
-  //use below if we have search options dropdown
-/*   var formatInputVal = document.querySelector('#format-input').value; */
-
   if (!searchTextVal) {
     console.error('You need a search input value!');
     return;
