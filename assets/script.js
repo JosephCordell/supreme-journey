@@ -7,24 +7,19 @@ let zoomLevel = 14;
 let map;
 let infoWindow;
 
-cardEl.addEventListener('hover', markerBounce);
-
-function markerBounce() {
-  console.log('BOUNCE')
-}
-
 //gets data from DocuMenu for cards and map markers
 function searchRestaurant(zipcode = null) {
   if (zipcode === null) {
     zipcode = inputEl.value.trim()
   }
-  docuMenuURL = `https://api.documenu.com/v2/restaurants/zip_code/${zipcode}?key=ce2dc71b6458503cfc0e34adfe844c3f`
+  updateHistory(zipcode)
+  docuMenuURL = `https://api.documenu.com/v2/restaurants/zip_code/${zipcode}?key=b4f2abd8c5f0c8f20dcb63fa0528232f`
   fetch(docuMenuURL)
     .then(response => {
       if (response.ok){
         return response.json();
       }
-      throw new Error("invalid asl;dkjf")
+      throw new Error("invalid")
     })
     .then(request => {
       businessCards(request);  
@@ -65,7 +60,6 @@ function businessCards (data) {
   let rlat = data.data[0].geo.lat;
   let rlon = data.data[0].geo.lon;
   updateMap(rlat, rlon)
-  console.log(data)
   for (let i = 0; i <= data.data.length; i++) {
         const restaurantCardEl = document.createElement("div"); 
         restaurantCardEl.classList.add("card"); 
@@ -146,6 +140,7 @@ function handleSearchFormSubmit(event) {
   var searchTextVal = document.querySelector('#search-text').value;
   if (!searchTextVal) {
     console.error('You need a search input value!');
+    showModal()
     return;
   }
   searchRestaurant();
@@ -165,3 +160,20 @@ function showModal() {
 document.querySelector(".modal-btn").addEventListener("click", function() {
   modalBg.classList.remove("modal-active"); 
 })
+
+function updateHistory(userZip){
+  if (userZip !== ''){
+    let storage = JSON.parse(localStorage.getItem("userInput"));
+    let zipHistory=[userZip];
+    if(storage != null){
+      storage.forEach(zip=>{
+        if (zip !== userZip){
+          zipHistory.push(zip);
+        }
+      })
+    }
+    var jsonObject = JSON.stringify(zipHistory);
+    localStorage.setItem("userInput", jsonObject);
+  }
+  }
+  

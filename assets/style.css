@@ -70,9 +70,14 @@ h3 {
 }
 
 .search-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding-top: 15px;
 }
-
+.search-box p {
+    padding-bottom: 10px;
+}
 .city-search {
     height: 30px;
     border: 1px solid var(--drk-color);
