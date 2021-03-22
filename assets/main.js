@@ -17,7 +17,12 @@ function handleSearchFormSubmit(event) {
 
   location.assign(queryString);
   updateHistory(searchTextVal);
+}
 
+function historyClick(event, zip) {
+  event.preventDefault();
+  var queryString = './search-results.html?q=' + zip;
+  location.assign(queryString);
 }
 
 searchFormEl.addEventListener('submit', handleSearchFormSubmit);
@@ -35,17 +40,19 @@ function updateHistory(userZip){
   }
     var jsonObject = JSON.stringify(zipHistory);
     localStorage.setItem("userInput", jsonObject);
-    
+
   }
   
   function viewHistory(){
     getHistory.innerHTML="";
     var storage = JSON.parse(localStorage.getItem("userInput"));
-    console.log(storage)
+    while (storage.length > 5) {
+      storage.pop()
+    }
     for (let i = 0; i < storage.length; i++) {      
       let displayHistory = document.createElement("div");
       let updateItem =
-      `<button class="history-item btn" data-id="${storage[i]}"onclick="handleSearchFormSubmit(event)">${storage[i]}</button>`;
+      `<button class="history-item btn" data-id="${storage[i]}"onclick="historyClick(event, ${storage[i]})">${storage[i]}</button>`;
       displayHistory.innerHTML = updateItem;
       getHistory.appendChild(displayHistory);
     }
