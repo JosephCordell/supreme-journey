@@ -12,9 +12,10 @@
     --lt-color: rgb(252, 228, 48);
 }
 
-body{
+body { 
     background-color: var(--bg-color);
     height: 100vh;
+    background: whitesmoke;    
 }
 
 main {
@@ -25,19 +26,19 @@ main {
 
 header {
     width: 100%;
-    background: url("../image/pattern.jpg");
+    background: linear-gradient(to bottom, var(--md-color), var(--drk-color));
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 3px solid var(--drk-color)
+    border-bottom: 3px solid var(--drk-color);
 }
 
 h1 {
-    padding: 15px;
     font-family: 'Notable', monospace; 
-    font-size: 7vw;
+    font-size: 3.5vw;
     color: whitesmoke;
     text-align: center;
+    margin-bottom: -5px;
 }
 
 h2 {
@@ -49,22 +50,23 @@ h2 {
 }
 
 h3 {
+    font-size: 2vh;
     padding: 10px;
     color: black;
     text-align: center;
 }
 
 .search-container {
-    margin-top: 15%;
+    margin-top: 20%;
     border-radius: 15px;
     background-color: var(--bg-color);
-    border: 3px solid var(--md-color);
+    border: 3px solid var(--drk-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
     padding: 35px;
-    box-shadow: 1px 1px 1px var(--drk-color);
+    box-shadow: 2px 1px 1px var(--md-color);
 }
 
 .search-box {
@@ -76,6 +78,7 @@ h3 {
     border: 1px solid var(--drk-color);
     border-radius: 5px 0px 0px 5px;
 }
+
 .city-search:focus {
     outline: none;
 }
@@ -102,6 +105,10 @@ h3 {
     cursor: pointer;
 }
 
+.search-icon:hover {
+    background-color: blueviolet;
+}
+
 .content {
     display: flex;
     color: black;
@@ -115,8 +122,8 @@ h3 {
 .left-side {
     background-color: var(--bg-color);
     padding: 30px;
-    width: 35%;
-    height: 80vh;
+    width: 40%;
+    height: 85vh;
     overflow: scroll;
 }
 
@@ -162,14 +169,20 @@ h3 {
     margin: 10px
 }
 
+.card:hover {
+    border: 1px solid var(--md-color)
+}
+
 .card h1 {
+    font-family: "montserrat", sans-serif;
     color: black;
-    font-size: 20px;
+    font-size: 22px;
 }
 
 .card a {
     text-decoration: none;
     text-align: center;
+    font-size: 14px;
 }
 
 .modal-bg {
@@ -217,16 +230,24 @@ h3 {
 }
 
 @media only screen and (max-width: 600px) {
+    
     .content {
         flex-wrap: wrap;
     }
+
     .left-side {
         width: 100%;
-        height: 30vh;
-        border-bottom: 3px solid var(--drk-color);
-    }
-    #maps {
-        height: 50vh;
+        height: 35vh;
+        border-bottom: 5px solid var(--drk-color);
     }
 
+    #maps {
+        height: 55vh;
+        border-left: none;
+
+    }
+
+    h1 {
+        margin-bottom: -3px;
+    }
 }
