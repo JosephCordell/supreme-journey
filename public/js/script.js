@@ -2,6 +2,7 @@ const container = document.querySelector(".card-container");
 const inputEl = document.getElementById('search-text')
 var searchFormEl = document.querySelector('#search-form');
 var cardEl = document.querySelector('.card')
+require('dotenv').config()
 
 let zoomLevel = 14;
 let map;
@@ -13,7 +14,7 @@ function searchRestaurant(zipcode = null) {
     zipcode = inputEl.value.trim()
   }
   updateHistory(zipcode)
-  docuMenuURL = `https://api.documenu.com/v2/restaurants/zip_code/${zipcode}?key=b4f2abd8c5f0c8f20dcb63fa0528232f`
+  docuMenuURL = `https://api.documenu.com/v2/restaurants/zip_code/${zipcode}?key=${DOCUMENU_KEY}`
   fetch(docuMenuURL)
     .then(response => {
       if (response.ok){

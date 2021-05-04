@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Notable&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+    <title>Supreme Journey</title>
+</head>
+<body>
+    <header> 
+        <h1>Supreme Journey</h1>
+    </header>
+    <div class="content">
+        <aside class="left-side">
+            <div class="search-box">
+                <p>Search new Zip Code </p>
+                <form id="search-form">
+                    <input id="search-text" name="city-search" type="text" class="city-search" value='' >
+                    <button id='button' type="submit">
+                        <i class="fa fa-search search-icon"></i>
+                    </button>
+                </form>
+            </div>
+            <!-- puts in user input ex "Restaurants in Bellevue" -->
+            <div class="user-input"></div>
+            <br>
+
+            <div class="card-container">
+                <!-- will need to be executed in js, remove line once added in js -->
+
+            </div>
+        </aside>
+
+        <div id="maps">
+            <!-- display map here -->
+            <div id="map"></div>
+        </div>
+    </div>
+        <div class="modal-bg">
+        <div class="modal">
+            <h2>Modal</h2>
+            <label for="error">Please enter a valid zip code</label>
+            <button class="modal-btn">OK</button>
+        </div>
+    </div>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTB_eDKm4TVgr2-_T2N3pvM2dBNsKjby8&callback=initMap&libraries=&v=weekly" async></script>
+    <script src="./assets/script.js"></script>
+</body>
+</html>
