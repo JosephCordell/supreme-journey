@@ -8,6 +8,7 @@ Supreme Journey is about creating a simple way to find a website. Upon landing o
 
 ## Submission Links
 Repository URL: [https://github.com/JosephCordell/supreme-journey](https://github.com/JosephCordell/supreme-journey)
+
 Website URL: [https://josephcordell.github.io/supreme-journey/](https://josephcordell.github.io/supreme-journey/)
 
 ## Screenshots
