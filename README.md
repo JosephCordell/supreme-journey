@@ -1,5 +1,7 @@
 # supreme-journey
 
+DOCUMENU API IS NO LONGER AVAILABLE, THIS APP NO LONGER WORKS
+
 ## About
 
 Supreme Journey is about creating a simple way to find a website. Upon landing on the first page you are greeted with a simple request to enter a zip code to find restaurants in that area. The search results page shows the user local restaurants along with a map of where the restaurants are located. Hovering over the restaurant card will cause the corresponding marker to bounce and clicking on the card will load the card info on the map. The links are clickable and will open in a new tab. 
